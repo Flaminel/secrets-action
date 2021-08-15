@@ -1,13 +1,15 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: "Secrets action"
+description: "Retrieves secrets from the vault and sets them as environment variables."
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
-    required: true
-    default: '1000'
+    access-token:
+        description: "The access token for the secrets api."
+        required: true
+    secrets-names:
+        description: "The names of the secrets to retrieve."
+        required: true
 outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+    secrets-values: # output will be available to future steps
+        description: "The secrets values."
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+    using: "node12"
+    main: "dist/index.js"

@@ -22,4 +22,5 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ./
       with:
-        milliseconds: 1000
+        access-token: 'test'
+        secret-key: 'test'
