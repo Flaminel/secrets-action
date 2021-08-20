@@ -28,6 +28,6 @@ $ npm test
 ```yaml
 uses: flaminel/secrets-action@v1
 with:
-  access-token: 'test'
-  secret-key: 'test'
+    access-token: "test"
+    secrets-names: "test"
 ```
