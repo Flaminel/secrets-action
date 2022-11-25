@@ -11,5 +11,5 @@ outputs:
     secrets-values: # output will be available to future steps
         description: "The secrets values."
 runs:
-    using: "node12"
+    using: "node16"
     main: "dist/index.js"
