@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const fetch = require("node-fetch");
+import fetch from 'node-fetch';
 
 async function run() {
     try {
@@ -13,7 +13,7 @@ async function run() {
         };
 
         const response = await fetch(
-            "https://secrets-api.pricegrabber.xyz/api/secrets/multiple",
+            "https://secrets.pricegrabber.xyz/api/secrets/multiple",
             {
                 method: "POST",
                 body: JSON.stringify(body),
