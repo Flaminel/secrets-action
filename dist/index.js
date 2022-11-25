@@ -9939,6 +9939,12 @@ async function run() {
         }
 
         const content = await response.json();
+        const keys = Object.keys(content);
+
+        keys.forEach((key) => {
+            core.exportVariable(key, content[key]);
+            core.setSecret(content[key]);
+        });
 
         core.setOutput("secrets-values", JSON.stringify(content));
     } catch (error) {
