@@ -5,8 +5,9 @@ inputs:
         description: "The access token for the secrets api."
         required: true
     secrets-names:
-        description: "The names of the secrets to retrieve."
-        required: true
+        description: "The names of the secrets to retrieve. Leave empty to retrieve all of them."
+        required: false
+        default: ""
 outputs:
     secrets-values: # output will be available to future steps
         description: "The secrets values."

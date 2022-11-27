@@ -9914,19 +9914,37 @@ async function run() {
             Accept: "application/json",
             "Content-Type": "application/json",
         };
-        const body = {
-            accessToken: core.getInput("access-token"),
-            secretsKeys: JSON.parse(core.getInput("secrets-names")).names,
-        };
 
-        const response = await fetch(
-            "https://secrets.pricegrabber.xyz/api/secrets/multiple",
-            {
-                method: "POST",
-                body: JSON.stringify(body),
-                headers: headers,
-            }
-        );
+        const secrets = core.getInput("secrets-names");
+        const body = {
+            accessToken: core.getInput("access-token")
+        };
+        var response;
+
+        if (secrets === "") {
+            response = await fetch(
+                "https://secrets.pricegrabber.xyz/api/secrets/all",
+                {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify(body)
+                }
+            );
+        }
+        else {
+            body['secretsKeys'] = JSON.parse().names;
+    
+            response = await fetch(
+                "https://secrets.pricegrabber.xyz/api/secrets/multiple",
+                {
+                    method: "POST",
+                    body: JSON.stringify(body),
+                    headers: headers,
+                }
+            );
+        }
+
+        
 
         if (response.status === 404) {
             core.setFailed(await response.json());
@@ -9942,8 +9960,8 @@ async function run() {
         const keys = Object.keys(content);
 
         keys.forEach((key) => {
-            core.exportVariable(key, content[key]);
             core.setSecret(content[key]);
+            core.exportVariable(key, content[key]);
         });
 
         core.setOutput("secrets-values", JSON.stringify(content));
