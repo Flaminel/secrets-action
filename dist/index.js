@@ -9923,7 +9923,7 @@ async function run() {
 
         if (secrets === "") {
             response = await fetch(
-                "https://secrets.pricegrabber.xyz/api/secrets/all",
+                "https://secrets.mariusne.com/api/secrets/all",
                 {
                     method: "POST",
                     headers: headers,
@@ -9935,7 +9935,7 @@ async function run() {
             body['secretsKeys'] = JSON.parse().names;
     
             response = await fetch(
-                "https://secrets.pricegrabber.xyz/api/secrets/multiple",
+                "https://secrets.mariusne.com/api/secrets/multiple",
                 {
                     method: "POST",
                     body: JSON.stringify(body),
